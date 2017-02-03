@@ -11,29 +11,29 @@ app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
   var todo = new Todo({
-    text: req.body.text
-  })
+    text: req.body.text,
+  });
 
-  todo.save().then((doc) => {
+  todo.save().then(doc => {
     res.send(doc);
-  }, (e) => {
+  }, e => {
     res.status(400).send(e);
-  })
-})
-
-app.get('/todos', (req, res) => {
-  Todo.find().then((todos) => {
-    res.send({todos})
-  }, (e) => {
-    res.status(400).send(e)
-  })
-})
-
-app.listen(3000, () => {
-  console.log('Started on port 3000')
+  });
 });
 
-module.exports = { app }
+app.get('/todos', (req, res) => {
+  Todo.find().then(todos => {
+    res.send({ todos });
+  }, e => {
+    res.status(400).send(e);
+  });
+});
+
+app.listen(3000, () => {
+  console.log('Started on port 3000');
+});
+
+module.exports = { app };
 // var newTodo = new Todo({
 //   text: 'Cook dinner'
 // })
@@ -43,7 +43,6 @@ module.exports = { app }
 // }, (e) => {
 //   console.log('Unable to save todo')
 // });
-
 // var otherTodo = new Todo({
 //   text: ' Edit this video '
 // })
@@ -53,7 +52,6 @@ module.exports = { app }
 // }, (e) => {
 //   console.log('Unable to save', e);
 // });
-
 // var user = new User({
 //   email: ''
 // })
