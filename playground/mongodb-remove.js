@@ -10,9 +10,7 @@ Todo.remove({}).then(result => {
   console.log(result);
 });
 
-Todo.findOneAndRemove({_id: id}).then((todo) => {
-  
-});
+Todo.findOneAndRemove({ _id: id }).then(todo => {});
 
 Todo.findByIdAndRemove(id).then(todo => {
   console.log(todo);
